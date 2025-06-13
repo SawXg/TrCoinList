@@ -1,5 +1,10 @@
+import React from 'react';
+import CryptoList from './components/Crypto/CryptoList';
+import './App.css'; // Assuming you have an App.css or will create one for general styles
+
 function App() {
-  
+  const [showCryptoSearch, setShowCryptoSearch] = React.useState(false);
+
   return (
     <div className="App">
       <div class="preloader">
@@ -31,9 +36,9 @@ function App() {
 <img src="assets/images/logo-2.png" class="logo-one" alt="Logo" />
 <img src="assets/images/logo.png" class="logo-two" alt="Logo" />
 </a>
-<div class="nav-widget-form nav-widget-form-bg">
+<div class="nav-widget-form nav-widget-form-bg dark-theme-search">
 <form class="search-form">
-<input type="search" class="form-control" placeholder="Search items, Creators " />
+<input type="search" class="global-search-input" placeholder="Search items, Creators " />
 <button type="submit">
 <i class="ri-search-line"></i>
 </button>
@@ -296,15 +301,33 @@ Contact Us
 <i class="ri-close-line"></i>
 </button>
 </div>
-<div class="modal-body">
+<div class="modal-body dark-theme-search">
 <form class="modal-search-form">
-<input type="search" class="search-field" placeholder="Search..." />
+<input type="search" class="global-search-input" placeholder="Search..." />
 <button type="submit"><i class="ri-search-line"></i></button>
 </form>
 </div>
 </div>
 </div>
 </div>
+
+{showCryptoSearch && (
+  <div className="modal fade show d-block" id="cryptoSearchModal" tabIndex="-1" role="dialog" aria-labelledby="cryptoSearchModalLabel" aria-hidden="true">
+    <div className="modal-dialog modal-dialog-centered" role="document">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="cryptoSearchModalLabel">Search Cryptocurrencies</h5>
+          <button type="button" className="close" onClick={() => setShowCryptoSearch(false)} aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div className="modal-body dark-theme-search">
+          <CryptoList />
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
 
 <div class="banner-area-three">
@@ -317,6 +340,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam etiam rhonc
 <div class="banner-btn">
 <a href="about.html" class="default-btn border-radius-5">Explore More</a>
 <a href="add-wallet.html" class="default-btn two border-radius-5">Connect NFT</a>
+<button class="default-btn border-radius-5" onClick={() => setShowCryptoSearch(true)}>Search Cryptos</button>
 </div>
 </div>
 </div>

@@ -3,3 +3,19 @@
 
 # local env files
 /backend/config/config.env
+
+# Node.js
+.env
+logs
+dist/
+build/
+tmp/
+temp/
+
+# Client-side dependencies
+client/node_modules
+client/package-lock.json
+
+# Generated data
+src/data/invoice/
+src/data/images/
